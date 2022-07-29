@@ -107,7 +107,6 @@ const addDepartment = ()=>{
         }
     console.log(ans.departmentName + " has been added successfully!")
     viewDepartments();
-    start();
     })
     })
 }
@@ -138,7 +137,6 @@ const addRole = ()=>{
         }
     console.log(ans.roleName + " has been added successfully!")
     viewRoles();
-    start();
     })
     })
 }
@@ -173,7 +171,6 @@ const addEmployee = ()=>{
         }
     console.log(ans.firstName + " " + ans.lastName + " has been added successfully!")
     viewEmployees();
-    start();
     })
     })
 }
@@ -198,7 +195,6 @@ const updateEmployeeRole = ()=>{
         }
     console.log("Employee " + ans.employee + " has been updated successfully!")
     viewEmployees();
-    start();
     })
     })
 }
