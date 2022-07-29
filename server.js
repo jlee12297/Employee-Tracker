@@ -101,4 +101,53 @@ const viewEmployees = ()=>{
     })
 }
 
+const addDepartment = ()=>{
+   inquirer.prompt([
+        {
+        type:"input",
+        message:"Name of the department you would like to add?",
+        name:"departmentName"
+        }
+    ]).then(ans=>{
+        db.query(`INSERT INTO department (name) VALUES ("` + ans.departmentName + `");`,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log(ans.departmentName + " has been added successfully!")
+    viewDepartments();
+    start();
+    })
+    })
+}
+
+
+const addRole = ()=>{
+   inquirer.prompt([
+        {
+        type:"input",
+        message:"Name of the role you would like to add?",
+        name:"roleName"
+        },
+        {
+        type:"input",
+        message:"What is the salary for this role? (No $ sign needed)",
+        name:"salary"
+        },
+        {
+        type:"input",
+        message:"Please specify the Department ID for this role: ",
+        name:"roleId"
+        },
+    ]).then(ans=>{
+        db.query(`INSERT INTO roles (title,salary,department_id) VALUES 
+            ("` + ans.roleName + `", "` + ans.salary + `", "` + ans.roleId + `");`,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log(ans.roleName + " has been added successfully!")
+    viewRoles();
+    start();
+    })
+    })
+}
 
