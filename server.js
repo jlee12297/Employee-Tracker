@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 const { clog } = require('./middleware/clog');
-const api = require('./routes/index.js');
 const inquirer = require("inquirer");
 const mysql = require("mysql2");
 
@@ -21,6 +20,13 @@ const db = mysql.createConnection(
   },
   console.log(`Connected to the company_db database.`)
 );
+
+db.connect(err => {
+  if (err) throw err;
+  console.log("Connected!");
+  console.log("Welcome to the Employee Tracker App!")
+  start();
+});
 
 const start = ()=>{
     inquirer.prompt([
@@ -50,4 +56,4 @@ const start = ()=>{
 }
 
 
-start();
+
