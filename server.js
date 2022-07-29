@@ -23,8 +23,7 @@ const db = mysql.createConnection(
 
 db.connect(err => {
   if (err) throw err;
-  console.log("Connected!");
-  console.log("Welcome to the Employee Tracker App!")
+  console.log("Welcome to the Employee Tracker App!");
   start();
 });
 
