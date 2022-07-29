@@ -17,14 +17,15 @@ INSERT INTO roles (title,salary,department_id) VALUES
 ("Yoga Master", 70000, 4);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES 
-("Josh", "Lee", 1, 2),
 ("Joseph", "Franzo", 2, null),
-("Kyle", "Wong", 3, 4),
 ("Lu", "Xiaojun", 4, null),
-("Kevin", "Ling", 5, 6),
+("Mahatma", "Ghandi", 8, null),
 ("Arnold", "Schwarznegger", 6, null),
-("Anne", "Kim", 7, 8),
-("Mahatma", "Ghandi", 8, null);
+("Josh", "Lee", 1, 1),
+("Kyle", "Wong", 3, 2),
+("Kevin", "Ling", 5, 4),
+("Anne", "Kim", 7, 3);
+
 
 
 
