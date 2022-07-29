@@ -151,3 +151,38 @@ const addRole = ()=>{
     })
 }
 
+const addEmployee = ()=>{
+   inquirer.prompt([
+        {
+        type:"input",
+        message:"First name of the employee?",
+        name:"firstName"
+        },
+        {
+        type:"input",
+        message:"Last name of the employee?",
+        name:"lastName"
+        },
+        {
+        type:"input",
+        message:"Please specify the Role ID for this employee: ",
+        name:"role"
+        },
+        {
+        type:"input",
+        message:"Please specify the Manager's ID for this employee (if applicable): ",
+        name:"manager"
+        },
+    ]).then(ans=>{
+        db.query(`INSERT INTO employees (first_name, last_name, role_id, manager_id) VALUES 
+            ("` + ans.firstName + `", "` + ans.lastName + `", "` + ans.role + `", "` + ans.manager + `");`,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log(ans.firstName + " " + ans.lastName + " has been added successfully!")
+    viewEmployees();
+    start();
+    })
+    })
+}
+
