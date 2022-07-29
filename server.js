@@ -186,3 +186,28 @@ const addEmployee = ()=>{
     })
 }
 
+
+const updateEmployeeRole = ()=>{
+   inquirer.prompt([
+        {
+        type:"input",
+        message:"Please specify the ID of the employee you would like to update: ",
+        name:"employee"
+        },
+        {
+        type:"input",
+        message:"Please specify the ID of the role you would like to assign to this employee: ",
+        name:"role"
+        },
+    ]).then(ans=>{
+        db.query(`UPDATE employees SET role_id = ` + ans.role + ` WHERE id = ` + ans.employee + `` ,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log("Employee " + ans.employee + " has been updated successfully!")
+    viewEmployees();
+    start();
+    })
+    })
+}
+
