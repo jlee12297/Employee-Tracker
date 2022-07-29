@@ -56,10 +56,46 @@ const start = ()=>{
 
 
 const viewDepartments = ()=>{
-    db.query("SELECT department.id AS id, department.name AS department FROM department",(err,data)=>{
+    db.query(`SELECT department.id AS ID, 
+            department.name AS Department FROM department`,(err,data)=>{
         if(err){
             throw err
         }
+    console.log("LIST OF ALL DEPARTMENTS")
+    console.table(data);
+    start();
+    })
+}
+
+const viewRoles = ()=>{
+    db.query(`SELECT roles.id AS Role_ID, 
+            roles.title AS Role_Title, 
+            department.name AS Department FROM roles 
+            INNER JOIN department ON roles.department_id = department.id`,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log("LIST OF ALL ROLES")
+    console.table(data);
+    start();
+    })
+}
+
+const viewEmployees = ()=>{
+    db.query(`SELECT employees.id AS Employee_ID, 
+                      employees.first_name AS First_Name, 
+                      employees.last_name AS Last_Name, 
+                      roles.title AS Title, 
+                      department.name AS Department,
+                      roles.salary AS Salary, 
+                      employees.manager_id AS Manager_ID FROM employees
+                      LEFT JOIN roles ON employees.role_id = roles.id
+                      LEFT JOIN department ON roles.department_id = department.id
+                      LEFT JOIN employees manager ON employees.manager_id = manager.id`,(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.log("LIST OF ALL EMPLOYEES")
     console.table(data);
     start();
     })
