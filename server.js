@@ -55,4 +55,14 @@ const start = ()=>{
 }
 
 
+const viewDepartments = ()=>{
+    db.query("SELECT department.id AS id, department.name AS department FROM department",(err,data)=>{
+        if(err){
+            throw err
+        }
+    console.table(data);
+    start();
+    })
+}
+
 
